@@ -1,0 +1,13 @@
+spring:
+  #配置中心地址
+  cloud:
+    nacos:
+      config:
+        server-addr: 172.16.8.227:8848
+        namespace: 588bb147-c6af-4805-be17-705fd5253ce2
+      #注册中心地址
+      discovery:
+        server-addr: 172.16.8.227:8848
+        namespace: 588bb147-c6af-4805-be17-705fd5253ce2
+      username: nacos
+      password: N3HJ5CG7Nuo7tEqQ

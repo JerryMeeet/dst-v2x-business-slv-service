@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dst.v2x.business.slv.service.infrastructure.doris.mapper.CanDataMapper">
+    <resultMap id="VoResultMap" type="dst.v2x.business.slv.service.infrastructure.doris.vo.CanDataVO">
+        <result property="abs" column="abs" typeHandler="dst.v2x.business.slv.service.infrastructure.doris.handler.JsonTypeHandler"/>
+        <result property="bms" column="bms" typeHandler="dst.v2x.business.slv.service.infrastructure.doris.handler.JsonTypeHandler"/>
+        <result property="pdu" column="pdu" typeHandler="dst.v2x.business.slv.service.infrastructure.doris.handler.JsonTypeHandler"/>
+        <result property="mcu" column="mcu" typeHandler="dst.v2x.business.slv.service.infrastructure.doris.handler.JsonTypeHandler"/>
+        <result property="vcu" column="vcu" typeHandler="dst.v2x.business.slv.service.infrastructure.doris.handler.JsonTypeHandler"/>
+        <result property="module" column="module" typeHandler="dst.v2x.business.slv.service.infrastructure.doris.handler.JsonTypeHandler"/>
+        <result property="powerSteering" column="power_steering" typeHandler="dst.v2x.business.slv.service.infrastructure.doris.handler.JsonTypeHandler"/>
+    </resultMap>
+    <insert id="insertBatch">
+        INSERT INTO slv_can_data (vehicle_no,data_time,pull_time,abs,bms,pdu,mcu,vcu,module,power_steering)
+        VALUES
+        <foreach collection="list" item="item" separator=",">
+            (#{item.vehicleNo},#{item.dataTime},#{item.pullTime},
+             #{item.abs, typeHandler=dst.v2x.business.slv.service.infrastructure.doris.handler.JsonTypeHandler},
+             #{item.bms, typeHandler=dst.v2x.business.slv.service.infrastructure.doris.handler.JsonTypeHandler},
+             #{item.pdu, typeHandler=dst.v2x.business.slv.service.infrastructure.doris.handler.JsonTypeHandler},
+             #{item.mcu, typeHandler=dst.v2x.business.slv.service.infrastructure.doris.handler.JsonTypeHandler},
+             #{item.vcu, typeHandler=dst.v2x.business.slv.service.infrastructure.doris.handler.JsonTypeHandler},
+             #{item.module, typeHandler=dst.v2x.business.slv.service.infrastructure.doris.handler.JsonTypeHandler},
+             #{item.powerSteering, typeHandler=dst.v2x.business.slv.service.infrastructure.doris.handler.JsonTypeHandler})
+        </foreach>
+    </insert>
+
+    <select id="findPage" resultMap="VoResultMap">
+        SELECT
+        vehicle_no,data_time,pull_time,abs,bms,pdu,mcu,vcu,module,power_steering
+        FROM slv_can_data scd
+        <where>
+            <if test="query.vehicleNo != null and query.vehicleNo != ''">
+                AND scd.vehicle_no = #{query.vehicleNo}
+            </if>
+            <if test="query.startDataTime != null">
+                AND scd.data_time <![CDATA[ >= ]]> #{query.startDataTime}
+            </if>
+            <if test="query.startDataTime != null">
+                AND scd.data_time <![CDATA[ <= ]]> #{query.endDataTime}
+            </if>
+        </where>
+        order by scd.data_time desc
+    </select>
+</mapper>

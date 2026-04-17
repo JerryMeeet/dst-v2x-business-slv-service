@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dst.v2x.business.slv.service.infrastructure.biz.archive.mapper.TaskInfoMapper">
+
+    <resultMap id="BaseResultMap" type="dst.v2x.business.slv.service.infrastructure.biz.archive.entity.TaskInfo">
+            <id property="id" column="id" />
+            <result property="taskNo" column="task_no" />
+            <result property="vin" column="vin" />
+            <result property="taskStatus" column="task_status" />
+            <result property="belongCompany" column="belong_company" />
+            <result property="startTime" column="start_time" />
+            <result property="endTime" column="end_time" />
+            <result property="goals" column="goals" />
+            <result property="isDeleted" column="is_deleted" />
+            <result property="creator" column="creator" />
+            <result property="creatorName" column="creator_name" />
+            <result property="createTime" column="create_time" />
+            <result property="modifier" column="modifier" />
+            <result property="modifierName" column="modifier_name" />
+            <result property="modifyTime" column="modify_time" />
+    </resultMap>
+
+    <resultMap id="VoResultMap" type="dst.v2x.business.slv.service.infrastructure.biz.archive.vo.TaskInfoPageQueryVO">
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,task_no,vin,task_status,belong_company,start_time,
+        end_time,goals,is_deleted,creator,creator_name,
+        create_time,modifier,modifier_name,modify_time
+    </sql>
+
+    <insert id="batchAdd">
+        insert into slv_task_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            id,task_no,vin,task_status,belong_company,start_time,
+            end_time,goals,is_deleted,creator,creator_name,
+            create_time,modifier,modifier_name,modify_time
+        </trim>
+        values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.id}, #{item.taskNo}, #{item.vin}, #{item.taskStatus}, #{item.belongCompany}, #{item.startTime},
+            #{item.endTime}, #{item.goals}, #{item.isDeleted}, #{item.creator}, #{item.creatorName},
+            #{item.createTime}, #{item.modifier}, #{item.modifierName}, #{item.modifyTime})
+        </foreach>
+    </insert>
+
+    <select id="findPage" resultMap="VoResultMap">
+        SELECT
+        id,task_no,vin,task_status,belong_company,start_time,
+        end_time,goals,is_deleted,creator,creator_name,
+        create_time,modifier,modifier_name,modify_time
+        FROM slv_task_info sti
+        <where>
+            and sti.is_deleted=0
+            <if test="query.taskNo != null and query.taskNo != ''">
+                and sti.task_no LIKE concat(#{query.taskNo},'%')
+            </if>
+            <if test="query.vin != null and query.vin != ''">
+                and sti.vin LIKE concat(#{query.vin},'%')
+            </if>
+            <if test="query.taskStatus != null">
+                and sti.task_status = #{query.taskStatus}
+            </if>
+        </where>
+        order by sti.task_no, sti.id
+    </select>
+</mapper>

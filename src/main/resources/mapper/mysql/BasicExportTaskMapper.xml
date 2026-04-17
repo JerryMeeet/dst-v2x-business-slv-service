@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dst.vds.adas.infrastructure.biz.mysql.basicexporttask.mapper.BasicExportTaskMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap"
+               type="dst.v2x.business.slv.service.infrastructure.biz.basicexporttask.entity.BasicExportTask">
+        <id column="id" property="id"/>
+        <result column="data_title" property="dataTitle"/>
+        <result column="org_id" property="orgId"/>
+        <result column="oss_file_id" property="ossFileId"/>
+        <result column="file_name" property="fileName"/>
+        <result column="file_path" property="filePath"/>
+        <result column="file_type" property="fileType"/>
+        <result column="start_time" property="startTime"/>
+        <result column="end_time" property="endTime"/>
+        <result column="query_start_time" property="queryStartTime"/>
+        <result column="query_end_time" property="queryEndTime"/>
+        <result column="query_condition" property="queryCondition"/>
+        <result column="status" property="status"/>
+        <result column="del_flag" property="delFlag"/>
+        <result column="creator_id" property="creatorId"/>
+        <result column="create_time" property="createTime"/>
+        <result column="creator_name" property="creatorName"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, data_title, org_id, oss_file_id, file_name, file_path, file_type, start_time, end_time, query_start_time,
+        query_end_time, query_condition, status, del_flag, creator_id, create_time, creator_name
+    </sql>
+
+</mapper>

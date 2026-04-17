@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dst.v2x.business.slv.service.infrastructure.doris.mapper.RawDataNavMapper">
+
+    <resultMap id="BaseResultMap" type="dst.v2x.business.slv.service.infrastructure.doris.entity.RawDataNav">
+            <result property="vehicleNo" column="vehicle_no" />
+            <result property="year" column="year" />
+            <result property="month" column="month" />
+            <result property="day" column="day" />
+            <result property="hour" column="hour" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        vehicle_no,year,month,day,hour
+    </sql>
+
+    <!--根据年月查日-->
+    <select id="queryOfMonth" resultType="java.lang.Integer">
+        SELECT
+            DISTINCT day
+        FROM
+            slv_raw_data_nav
+        WHERE
+            vehicle_no = #{vehicleNo}
+          AND
+            year = #{year}
+          AND
+            month = #{month}
+    </select>
+
+    <!--根据年月日查时-->
+    <select id="queryOfDay" resultType="java.lang.Integer">
+        SELECT
+            hour
+        FROM
+            slv_raw_data_nav
+        WHERE
+            vehicle_no = #{vehicleNo}
+          AND
+            year = #{year}
+          AND
+            month = #{month}
+          AND
+            day = #{day}
+    </select>
+
+    <insert id="insertBatch">
+        INSERT INTO slv_raw_data_nav (vehicle_no,year,month,day,hour)
+        VALUES
+        <foreach collection="list" item="item" separator=",">
+            (#{item.vehicleNo},#{item.year},#{item.month},#{item.day},#{item.hour})
+        </foreach>
+    </insert>
+</mapper>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dst.v2x.business.slv.service.infrastructure.biz.archive.mapper.StationInfoMapper">
+
+    <resultMap id="BaseResultMap" type="dst.v2x.business.slv.service.infrastructure.biz.archive.entity.StationInfo">
+            <id property="id" column="id" />
+            <result property="stationNo" column="station_no" />
+            <result property="stationName" column="station_name" />
+            <result property="stationAddress" column="station_address" />
+            <result property="belongCompany" column="belong_company" />
+            <result property="lat" column="lat" />
+            <result property="lng" column="lng" />
+            <result property="isDeleted" column="is_deleted" />
+            <result property="creator" column="creator" />
+            <result property="creatorName" column="creator_name" />
+            <result property="createTime" column="create_time" />
+            <result property="modifier" column="modifier" />
+            <result property="modifierName" column="modifier_name" />
+            <result property="modifyTime" column="modify_time" />
+    </resultMap>
+
+    <resultMap id="VoResultMap" type="dst.v2x.business.slv.service.infrastructure.biz.archive.vo.StationInfoPageQueryVO">
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,station_no,station_name,station_address,belong_company,lat,
+        lng,is_deleted,creator,creator_name,create_time,
+        modifier,modifier_name,modify_time
+    </sql>
+
+
+    <insert id="batchAdd">
+        insert into slv_station_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            id,station_no,station_name,station_address,belong_company,lat,
+            lng,is_deleted,creator,creator_name,create_time,
+            modifier,modifier_name,modify_time
+        </trim>
+        values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.id}, #{item.stationNo}, #{item.stationName}, #{item.stationAddress}, #{item.belongCompany}, #{item.lat},
+            #{item.lng}, #{item.isDeleted}, #{item.creator}, #{item.creatorName}, #{item.createTime},
+            #{item.modifier}, #{item.modifierName}, #{item.modifyTime})
+        </foreach>
+    </insert>
+
+    <select id="findPage" resultMap="VoResultMap">
+        SELECT
+        id,station_no,station_name,station_address,belong_company,lat,
+        lng,is_deleted,creator,creator_name,create_time,
+        modifier,modifier_name,modify_time
+        FROM slv_station_info ssi
+        <where>
+            and ssi.is_deleted=0
+            <if test="query.stationNo != null and query.stationNo != ''">
+                and ssi.station_no LIKE concat(#{query.stationNo},'%')
+            </if>
+            <if test="query.stationName != null and query.stationName != ''">
+                and ssi.station_name LIKE concat(#{query.stationName},'%')
+            </if>
+        </where>
+        order by ssi.station_no, ssi.id
+    </select>
+</mapper>

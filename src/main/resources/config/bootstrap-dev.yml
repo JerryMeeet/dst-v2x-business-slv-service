@@ -1,0 +1,13 @@
+spring:
+  #配置中心地址
+  cloud:
+    nacos:
+      config:
+        server-addr: 172.16.8.165:8848
+        namespace: d9eba963-51aa-4d38-bd81-1206c419578e
+      #注册中心地址
+      discovery:
+        server-addr: 172.16.8.165:8848
+        namespace: d9eba963-51aa-4d38-bd81-1206c419578e
+      username: dev
+      password: gZognfcwSvyiq32r

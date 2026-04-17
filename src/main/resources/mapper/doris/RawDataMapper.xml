@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dst.v2x.business.slv.service.infrastructure.doris.mapper.RawDataMapper">
+
+    <resultMap id="BaseResultMap" type="dst.v2x.business.slv.service.infrastructure.doris.entity.RawData">
+            <result property="vehicleNo" column="vehicle_no" />
+            <result property="dataTime" column="data_time" />
+            <result property="pullTime" column="pull_time" />
+            <result property="speed" column="speed" />
+            <result property="electricCity" column="electric_city" />
+            <result property="onlineStatus" column="online_status" />
+            <result property="travelStatus" column="travel_status" />
+            <result property="doorStatus" column="door_status" />
+            <result property="controlMode" column="control_mode" />
+            <result property="lat" column="lat" />
+            <result property="lng" column="lng" />
+            <result property="vehicleErrorCode" column="vehicle_error_code" />
+            <result property="vehicleErrorMsg" column="vehicle_error_msg" />
+            <result property="odometer" column="odometer" />
+            <result property="chargeStatus" column="charge_status" />
+            <result property="chargeGunStatus" column="charge_gun_status" />
+            <result property="batteryHealth" column="battery_health" />
+            <result property="tplf" column="tplf" />
+            <result property="tplb" column="tplb" />
+            <result property="tprf" column="tprf" />
+            <result property="tprb" column="tprb" />
+    </resultMap>
+    <resultMap id="VoResultMap" type="dst.v2x.business.slv.service.infrastructure.doris.vo.RawDataVO">
+    </resultMap>
+    <sql id="Base_Column_List">
+        vehicle_no,data_time,pull_time,speed,electric_city,online_status,
+        travel_status,door_status,control_mode,lat,lng,
+        vehicle_error_code,vehicle_error_msg,odometer,charge_status,charge_gun_status,
+        battery_health,tplf,tplb,tprf,tprb,error_status,task_distance
+    </sql>
+
+    <insert id="insertBatch">
+        INSERT INTO slv_raw_data (vehicle_no,data_time,pull_time,speed,electric_city,online_status,
+        travel_status,door_status,control_mode,lat,lng,
+        vehicle_error_code,vehicle_error_msg,odometer,charge_status,charge_gun_status,
+        battery_health,tplf,tplb,tprf,tprb,error_status,task_distance)
+        VALUES
+        <foreach collection="list" item="item" separator=",">
+            (#{item.vehicleNo},#{item.dataTime},#{item.pullTime},#{item.speed},#{item.electricCity},#{item.onlineStatus},
+             #{item.travelStatus},#{item.doorStatus},#{item.controlMode},#{item.lat},#{item.lng},
+             #{item.vehicleErrorCode},#{item.vehicleErrorMsg},#{item.odometer},#{item.chargeStatus},#{item.chargeGunStatus},
+             #{item.batteryHealth},#{item.tplf},#{item.tplb},#{item.tprf},#{item.tprb},#{item.errorStatus},#{item.taskDistance})
+        </foreach>
+    </insert>
+
+    <select id="findPage" resultMap="VoResultMap">
+        SELECT
+        vehicle_no,data_time,pull_time,speed,electric_city,online_status,
+        travel_status,door_status,control_mode,lat,lng,
+        vehicle_error_code,vehicle_error_msg,odometer,charge_status,charge_gun_status,
+        battery_health,tplf,tplb,tprf,tprb,error_status,task_distance
+        FROM slv_raw_data srd
+        <where>
+            <if test="query.vehicleNo != null and query.vehicleNo != ''">
+                AND srd.vehicle_no = #{query.vehicleNo}
+            </if>
+            <if test="query.startDataTime != null">
+                AND srd.data_time <![CDATA[ >= ]]> #{query.startDataTime}
+            </if>
+            <if test="query.startDataTime != null">
+                AND srd.data_time <![CDATA[ <= ]]> #{query.endDataTime}
+            </if>
+        </where>
+        order by srd.data_time desc
+    </select>
+</mapper>

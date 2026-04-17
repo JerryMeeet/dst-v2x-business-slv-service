@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dst.v2x.business.slv.service.infrastructure.doris.mapper.RawAlarmHistoryMapper">
+
+    <resultMap id="BaseResultMap" type="dst.v2x.business.slv.service.infrastructure.doris.entity.RawAlarmHistory">
+        <result property="vehicleNo" column="vehicle_no"/>
+        <result property="dataTime" column="data_time"/>
+        <result property="dataType" column="data_type"/>
+        <result property="emergencyStopTime" column="emergency_stop_time"/>
+        <result property="doneTime" column="done_time"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        vehicle_no,
+        data_time,
+        data_type,
+        emergency_stop_time,
+        done_time
+    </sql>
+
+    <insert id="insertBatch">
+        INSERT INTO slv_raw_alarm_history (vehicle_no,data_type,data_time,emergency_stop_time,done_time)
+        VALUES
+        <foreach collection="list" item="item" separator=",">
+            (#{item.vehicleNo},#{item.dataType},#{item.dataTime},#{item.emergencyStopTime},#{item.doneTime})
+        </foreach>
+    </insert>
+</mapper>

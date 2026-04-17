@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dst.v2x.business.slv.service.infrastructure.biz.archive.mapper.VehicleInfoMapper">
+
+    <resultMap id="BaseResultMap" type="dst.v2x.business.slv.service.infrastructure.biz.archive.entity.VehicleInfo">
+            <id property="id" column="id" />
+            <result property="vehicleNo" column="vehicle_no" />
+            <result property="licensePlate" column="license_plate" />
+            <result property="vehicleVin" column="vehicle_vin" />
+            <result property="carryingCapacity" column="carrying_capacity" />
+            <result property="batteryLifeYear" column="battery_life_year" />
+            <result property="city" column="city" />
+            <result property="cityCode" column="city_code" />
+            <result property="addressName" column="address_name" />
+            <result property="addressNo" column="address_no" />
+            <result property="enduranceMileage" column="endurance_mileage" />
+            <result property="interspace" column="interspace" />
+            <result property="vehicleType" column="vehicle_type" />
+            <result property="doorQuantity" column="door_quantity" />
+            <result property="belongCompany" column="belong_company" />
+            <result property="isDeleted" column="is_deleted" />
+            <result property="creator" column="creator" />
+            <result property="creatorName" column="creator_name" />
+            <result property="createTime" column="create_time" />
+            <result property="modifier" column="modifier" />
+            <result property="modifierName" column="modifier_name" />
+            <result property="modifyTime" column="modify_time" />
+    </resultMap>
+
+    <resultMap id="VoResultMap" type="dst.v2x.business.slv.service.infrastructure.biz.archive.vo.VehicleInfoPageQueryVO">
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,vehicle_no,license_plate,vehicle_vin,carrying_capacity,battery_life_year,
+        city,city_code,address_name,address_no,endurance_mileage,
+        interspace,vehicle_type,door_quantity,belong_company,is_deleted,
+        creator,creator_name,create_time,modifier,modifier_name,
+        modify_time
+    </sql>
+
+    <insert id="batchAdd">
+        insert into slv_vehicle_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            id,vehicle_no,license_plate,vehicle_vin,carrying_capacity,battery_life_year,
+            city,city_code,address_name,address_no,endurance_mileage,
+            interspace,vehicle_type,door_quantity,belong_company,is_deleted,
+            creator,creator_name,create_time,modifier,modifier_name,
+            modify_time
+        </trim>
+        values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.id}, #{item.vehicleNo}, #{item.licensePlate}, #{item.vehicleVin}, #{item.carryingCapacity}, #{item.batteryLifeYear},
+            #{item.city}, #{item.cityCode}, #{item.addressName}, #{item.addressNo}, #{item.enduranceMileage},
+            #{item.interspace}, #{item.vehicleType}, #{item.doorQuantity}, #{item.belongCompany}, #{item.isDeleted},
+            #{item.creator}, #{item.creatorName}, #{item.createTime}, #{item.modifier}, #{item.modifierName},
+            #{item.modifyTime})
+        </foreach>
+    </insert>
+
+    <select id="findPage" resultMap="VoResultMap">
+        SELECT
+        id,vehicle_no,license_plate,vehicle_vin,carrying_capacity,battery_life_year,
+        city,city_code,address_name,address_no,endurance_mileage,
+        interspace,vehicle_type,door_quantity,belong_company,is_deleted,
+        creator,creator_name,create_time,modifier,modifier_name,
+        modify_time
+        FROM slv_vehicle_info svi
+        <where>
+            and svi.is_deleted=0
+            <if test="query.vehicleNo != null and query.vehicleNo != ''">
+                and svi.vehicle_no LIKE concat(#{query.vehicleNo},'%')
+            </if>
+            <if test="query.vehicleVin != null and query.vehicleVin != ''">
+                and svi.vehicle_vin LIKE concat(#{query.vehicleVin},'%')
+            </if>
+            <if test="query.licensePlate != null and query.licensePlate != ''">
+                and svi.license_plate LIKE concat(#{query.licensePlate},'%')
+            </if>
+            <if test="query.belongCompany != null">
+                and svi.belong_company = #{query.belongCompany}
+            </if>
+            <if test="query.vehicleType != null and query.vehicleType != ''">
+                and svi.vehicle_type = #{query.vehicleType}
+            </if>
+        </where>
+        order by svi.create_time desc, svi.id
+    </select>
+
+    <select id="findNoPage" resultType="java.lang.String">
+        SELECT
+        vehicle_no
+        FROM slv_vehicle_info svi
+        <where>
+            and svi.is_deleted=0
+            <if test="query.belongCompany != null">
+                and svi.belong_company = #{query.belongCompany}
+            </if>
+            <if test="query.iotdaDeviceIdIsNull != null and query.iotdaDeviceIdIsNull">
+                and svi.iotda_device_id is null
+            </if>
+        </where>
+        order by svi.id
+    </select>
+
+    <select id="findVinPage" resultType="java.lang.String">
+        SELECT
+        vehicle_vin
+        FROM slv_vehicle_info svi
+        <where>
+            and svi.is_deleted=0
+            <if test="query.belongCompany != null">
+                and svi.belong_company = #{query.belongCompany}
+            </if>
+        </where>
+        order by svi.id
+    </select>
+</mapper>

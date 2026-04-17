@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dst.v2x.business.slv.service.infrastructure.biz.archive.mapper.MapMakeMapper">
+
+    <resultMap id="VoResultMap" type="dst.v2x.business.slv.service.infrastructure.biz.archive.vo.MapMakePageQueryVO">
+    </resultMap>
+
+    <insert id="batchAdd">
+        insert into slv_map_make
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            id,map_make_id,map_make_name,province_name,belong_company,city_name,district_name,status,
+            is_deleted,creator,creator_name,create_time,
+            modifier,modifier_name,modify_time
+        </trim>
+        values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.id},
+            #{item.mapMakeId}, #{item.mapMakeName}, #{item.provinceName}, #{item.belongCompany}, #{item.cityName},
+            #{item.districtName}, #{item.status},
+            #{item.isDeleted}, #{item.creator}, #{item.creatorName}, #{item.createTime},
+            #{item.modifier}, #{item.modifierName}, #{item.modifyTime})
+        </foreach>
+    </insert>
+
+    <select id="findPage" resultMap="VoResultMap">
+        SELECT
+        id,map_make_id,map_make_name,province_name,belong_company,city_name,district_name,status,
+        is_deleted,creator,creator_name,create_time,
+        modifier,modifier_name,modify_time
+        FROM slv_map_make smm
+        <where>
+            and smm.is_deleted=0
+            <if test="query.mapMakeName != null and query.mapMakeName != ''">
+                and smm.map_make_name LIKE concat(#{query.mapMakeName},'%')
+            </if>
+            <if test="query.status != null">
+                and smm.status = #{query.status}
+            </if>
+        </where>
+        order by smm.status, smm.id
+    </select>
+</mapper>
