@@ -1,7 +1,7 @@
 package dst.v2x.business.slv.service.common.utils;
 
-import com.dst.steed.vds.common.base.exception.BusinessException;
-import com.dst.steed.vds.common.util.DstSpringUtil;
+import dst.v2x.business.slv.service.common.base.exception.BusinessException;
+import dst.v2x.business.slv.service.common.util.DstSpringUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.CollectionType;
 import dst.v2x.business.slv.service.common.enums.base.ApiCode;

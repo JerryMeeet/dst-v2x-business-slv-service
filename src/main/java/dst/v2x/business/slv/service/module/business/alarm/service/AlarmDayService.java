@@ -1,6 +1,6 @@
 package dst.v2x.business.slv.service.module.business.alarm.service;
 
-import com.dst.steed.vds.common.domain.response.PageDTO;
+import dst.v2x.business.slv.service.common.domain.response.PageDTO;
 import dst.v2x.business.slv.service.infrastructure.doris.dto.RawAlarmPageQueryDTO;
 import dst.v2x.business.slv.service.infrastructure.doris.service.RawAlarmDayServiceImpl;
 import dst.v2x.business.slv.service.infrastructure.doris.vo.RawAlarmVO;

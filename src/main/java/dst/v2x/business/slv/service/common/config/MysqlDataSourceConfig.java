@@ -34,6 +34,7 @@ public class MysqlDataSourceConfig {
 
     /**
      * 构建事务管理器
+     *
      * @param dataSource
      * @return
      */
@@ -45,6 +46,7 @@ public class MysqlDataSourceConfig {
 
     /**
      * 构建sqlSession工厂
+     *
      * @param dataSource
      * @return
      * @throws Exception
@@ -71,6 +73,7 @@ public class MysqlDataSourceConfig {
 
     /**
      * 构建sqlSession
+     *
      * @param sqlSessionFactory
      * @return
      */

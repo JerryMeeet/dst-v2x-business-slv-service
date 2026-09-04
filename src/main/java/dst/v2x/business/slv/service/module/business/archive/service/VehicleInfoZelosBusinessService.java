@@ -1,7 +1,7 @@
 package dst.v2x.business.slv.service.module.business.archive.service;
 
 import com.alibaba.fastjson.JSON;
-import com.dst.steed.vds.common.domain.response.PageDTO;
+import dst.v2x.business.slv.service.common.domain.response.PageDTO;
 import dst.v2x.business.slv.service.common.enums.archive.VehicleCompanyEnum;
 import dst.v2x.business.slv.service.common.redis.RedisKeyConstant;
 import dst.v2x.business.slv.service.common.utils.DstRedisUtil;

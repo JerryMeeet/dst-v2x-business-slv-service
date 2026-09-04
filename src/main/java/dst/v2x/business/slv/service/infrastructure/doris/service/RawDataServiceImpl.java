@@ -4,7 +4,7 @@ import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.dst.steed.vds.common.domain.response.PageDTO;
+import dst.v2x.business.slv.service.common.domain.response.PageDTO;
 import dst.v2x.business.slv.service.common.utils.DstPageUtil;
 import dst.v2x.business.slv.service.infrastructure.doris.dto.RawListQueryDTO;
 import dst.v2x.business.slv.service.infrastructure.doris.dto.RawPageQueryDTO;

@@ -1,6 +1,6 @@
-package com.dst.steed.vds.common.base.exception;
+package dst.v2x.business.slv.service.common.base.exception;
 
-import com.dst.steed.vds.common.domain.response.RespType;
+import dst.v2x.business.slv.service.common.domain.response.RespType;
 
 public class BusinessException extends RuntimeException {
     private int code;

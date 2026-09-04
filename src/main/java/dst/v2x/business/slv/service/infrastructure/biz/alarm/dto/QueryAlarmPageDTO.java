@@ -1,6 +1,6 @@
 package dst.v2x.business.slv.service.infrastructure.biz.alarm.dto;
 
-import com.dst.steed.vds.common.domain.request.PageQuery;
+import dst.v2x.business.slv.service.common.domain.request.PageQuery;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 

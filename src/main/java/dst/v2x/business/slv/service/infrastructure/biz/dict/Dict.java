@@ -4,7 +4,7 @@ import cn.hutool.core.text.StrFormatter;
 import cn.hutool.core.util.ReflectUtil;
 import cn.hutool.core.util.StrUtil;
 import com.alibaba.fastjson2.JSONObject;
-import com.dst.steed.vds.common.base.exception.BusinessException;
+import dst.v2x.business.slv.service.common.base.exception.BusinessException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -164,7 +164,7 @@ public interface Dict {
      */
     public static boolean isBusinessObjectType(Class<?> clazz) {
 //        return !ClassUtil.isJdkClass(clazz) && !ClassUtil.isBasicType(clazz);
-        return clazz.getName().startsWith("com.dst.vds.adas.common.domain") || clazz.getName().startsWith("com.dst.vds.adas.domain");
+        return clazz.getName().startsWith("dst.v2x.business.slv.service");
     }
 
     /**
@@ -175,8 +175,8 @@ public interface Dict {
      */
     public static boolean isTranslatable(Class<?> clazz) {
         return Dict.class.isAssignableFrom(clazz)
-               || Collection.class.isAssignableFrom(clazz)
-               || isBusinessObjectType(clazz);
+                || Collection.class.isAssignableFrom(clazz)
+                || isBusinessObjectType(clazz);
 
     }
 
@@ -191,8 +191,8 @@ public interface Dict {
             return false;
         }
         return Dict.class.isAssignableFrom(o.getClass())
-               || Collection.class.isAssignableFrom(o.getClass())
-               || isBusinessObjectType(o.getClass());
+                || Collection.class.isAssignableFrom(o.getClass())
+                || isBusinessObjectType(o.getClass());
 
     }
 

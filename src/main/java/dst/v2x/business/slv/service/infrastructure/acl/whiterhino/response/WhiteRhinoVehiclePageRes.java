@@ -1,6 +1,6 @@
 package dst.v2x.business.slv.service.infrastructure.acl.whiterhino.response;
 
-import com.dst.steed.vds.common.domain.response.PageDTO;
+import dst.v2x.business.slv.service.common.domain.response.PageDTO;
 import lombok.Data;
 
 import java.util.List;

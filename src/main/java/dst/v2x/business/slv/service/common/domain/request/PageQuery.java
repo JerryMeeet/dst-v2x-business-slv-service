@@ -1,4 +1,4 @@
-package com.dst.steed.vds.common.domain.request;
+package dst.v2x.business.slv.service.common.domain.request;
 
 import lombok.Data;
 

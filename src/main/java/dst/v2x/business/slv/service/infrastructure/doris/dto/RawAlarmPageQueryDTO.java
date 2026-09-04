@@ -1,7 +1,7 @@
 package dst.v2x.business.slv.service.infrastructure.doris.dto;
 
 import cn.hutool.core.date.DatePattern;
-import com.dst.steed.vds.common.domain.request.PageQuery;
+import dst.v2x.business.slv.service.common.domain.request.PageQuery;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;

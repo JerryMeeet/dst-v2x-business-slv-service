@@ -1,6 +1,6 @@
 package dst.v2x.business.slv.service.common.utils;
 
-import com.dst.steed.vds.common.base.exception.BusinessException;
+import dst.v2x.business.slv.service.common.base.exception.BusinessException;
 import dst.v2x.business.slv.service.common.enums.base.ApiCode;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;

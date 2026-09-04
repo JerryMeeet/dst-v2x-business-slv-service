@@ -1,7 +1,7 @@
 // AiAutoGenerateStart_yT9Q3pL7mNvH2sR8wE4xZ6cK1oA0uJ5d
 package dst.v2x.business.slv.service.module.business.archive.service;
 
-import com.dst.steed.vds.common.domain.response.PageDTO;
+import dst.v2x.business.slv.service.common.domain.response.PageDTO;
 import dst.v2x.business.slv.service.DstV2xBusinessSlvApplication;
 import dst.v2x.business.slv.service.infrastructure.biz.archive.dto.MapMakePageQueryDTO;
 import dst.v2x.business.slv.service.infrastructure.biz.archive.vo.MapMakePageQueryVO;

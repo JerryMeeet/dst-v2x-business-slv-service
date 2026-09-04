@@ -1,7 +1,7 @@
 package dst.v2x.business.slv.service.module.business.raw.service;
 
 import com.alibaba.fastjson.JSON;
-import com.dst.steed.vds.common.domain.response.PageDTO;
+import dst.v2x.business.slv.service.common.domain.response.PageDTO;
 import dst.v2x.business.slv.service.common.enums.archive.VehicleCompanyEnum;
 import dst.v2x.business.slv.service.infrastructure.acl.whiterhino.api.WhiteRhinoRemoteApi;
 import dst.v2x.business.slv.service.infrastructure.acl.whiterhino.request.WhiteRhinoVehicleRealtimeReq;

@@ -1,4 +1,4 @@
-package com.dst.steed.vds.common.util;
+package dst.v2x.business.slv.service.common.util;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;

@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -31,8 +30,8 @@ public class DorisDataSourceConfig {
 
     /**
      * 构建事务管理器
-     * @param dataSource
-     * @return
+     * 注意：未标 @Primary，默认事务管理器是 mysqlTransactionManager。
+     * Doris 侧使用 @Transactional 时必须显式指定 transactionManager = "dorisTransactionManager"
      */
     @Bean(name = "dorisTransactionManager")
     public PlatformTransactionManager dataSourceTransactionManager(@Qualifier("dorisDataSource") DataSource dataSource) {
@@ -41,6 +40,7 @@ public class DorisDataSourceConfig {
 
     /**
      * 构建sqlSession工厂
+     *
      * @param dataSource
      * @return
      * @throws Exception
@@ -52,17 +52,16 @@ public class DorisDataSourceConfig {
         final MybatisSqlSessionFactoryBean sessionFactoryBean = new MybatisSqlSessionFactoryBean();
         sessionFactoryBean.setDataSource(dataSource);
         sessionFactoryBean.setPlugins(mybatisPlusInterceptor);
-        sessionFactoryBean.setTypeHandlersPackage("dst.v2x.business.slv.service.infrastructure.biz.*.entity");
         sessionFactoryBean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:/mapper/doris/*.xml"));
         return sessionFactoryBean.getObject();
     }
 
     /**
      * 构建sqlSession
+     *
      * @param sqlSessionFactory
      * @return
      */
-    @Primary
     @Bean(name = "dorisSessionTemplate")
     public SqlSessionTemplate sqlSessionTemplate(@Qualifier("dorisSessionFactory") SqlSessionFactory sqlSessionFactory) {
         return new SqlSessionTemplate(sqlSessionFactory);

@@ -1,6 +1,6 @@
 package dst.v2x.business.slv.service.module.business.rocketmq;
 
-import com.dst.steed.vds.common.domain.response.Response;
+import dst.v2x.business.slv.service.common.domain.response.Response;
 import org.apache.rocketmq.spring.core.RocketMQTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

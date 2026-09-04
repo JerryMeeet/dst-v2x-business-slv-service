@@ -1,7 +1,7 @@
 // AiAutoGenerateStart_5F3A9B2C8D7E1F0A4C6B8E2D0F1A7C5
 package dst.v2x.business.slv.service.module.business.base.controller;
 
-import com.dst.steed.vds.common.domain.response.Response;
+import dst.v2x.business.slv.service.common.domain.response.Response;
 import dst.v2x.business.slv.service.common.enums.BaseEnum;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.web.bind.annotation.GetMapping;

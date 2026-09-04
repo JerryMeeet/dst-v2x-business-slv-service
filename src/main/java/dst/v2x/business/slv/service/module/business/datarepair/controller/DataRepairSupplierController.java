@@ -1,6 +1,6 @@
 package dst.v2x.business.slv.service.module.business.datarepair.controller;
 
-import com.dst.steed.vds.common.domain.response.Response;
+import dst.v2x.business.slv.service.common.domain.response.Response;
 import dst.v2x.business.slv.service.common.enums.archive.VehicleCompanyEnum;
 import dst.v2x.business.slv.service.infrastructure.acl.neolix.service.NeolixRemoteApiService;
 import dst.v2x.business.slv.service.module.business.archive.service.VehicleInfoZelosBusinessService;

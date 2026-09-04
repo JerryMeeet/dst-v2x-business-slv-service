@@ -1,6 +1,6 @@
 package dst.v2x.business.slv.service.infrastructure.acl.neolix.service;
 
-import com.dst.steed.vds.common.util.DstJsonUtil;
+import dst.v2x.business.slv.service.common.util.DstJsonUtil;
 import dst.v2x.business.slv.service.infrastructure.acl.neolix.enmus.NeolixTaskStatusEnum;
 import dst.v2x.business.slv.service.infrastructure.acl.neolix.response.NeolixStationInfoRes;
 import dst.v2x.business.slv.service.infrastructure.acl.neolix.response.NeolixTaskInfoRes;

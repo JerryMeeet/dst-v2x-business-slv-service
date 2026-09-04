@@ -1,4 +1,4 @@
-package com.dst.steed.vds.common.util;
+package dst.v2x.business.slv.service.common.util;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;

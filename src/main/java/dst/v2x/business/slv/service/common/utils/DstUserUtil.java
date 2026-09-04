@@ -2,9 +2,9 @@ package dst.v2x.business.slv.service.common.utils;
 
 import cn.hutool.core.util.StrUtil;
 import com.alibaba.fastjson2.JSONObject;
-import com.dst.steed.vds.common.base.domain.user.SSOUser;
-import com.dst.steed.vds.common.constant.MinConstant;
-import com.dst.steed.vds.common.util.DstThreadLocalUtil;
+import dst.v2x.business.slv.service.common.base.domain.user.SSOUser;
+import dst.v2x.business.slv.service.common.constant.MinConstant;
+import dst.v2x.business.slv.service.common.util.DstThreadLocalUtil;
 import org.apache.commons.lang3.StringUtils;
 
 import java.net.URLDecoder;

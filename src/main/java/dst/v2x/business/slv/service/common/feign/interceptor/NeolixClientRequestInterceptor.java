@@ -1,6 +1,6 @@
 package dst.v2x.business.slv.service.common.feign.interceptor;
 
-import com.dst.steed.vds.common.util.DstSpringUtil;
+import dst.v2x.business.slv.service.common.util.DstSpringUtil;
 import dst.v2x.business.slv.service.infrastructure.acl.neolix.service.NeolixRemoteApiService;
 import feign.Request;
 import feign.RequestInterceptor;

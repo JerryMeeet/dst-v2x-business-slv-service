@@ -1,7 +1,7 @@
 package dst.v2x.business.slv.service.module.business.can.service;
 
 import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
-import com.dst.steed.vds.common.domain.response.PageDTO;
+import dst.v2x.business.slv.service.common.domain.response.PageDTO;
 import dst.v2x.business.slv.service.common.enums.archive.VehicleCompanyEnum;
 import dst.v2x.business.slv.service.infrastructure.acl.zelos.service.ZelosCanApiService;
 import dst.v2x.business.slv.service.infrastructure.biz.archive.dto.VehicleInfoPageQueryDTO;

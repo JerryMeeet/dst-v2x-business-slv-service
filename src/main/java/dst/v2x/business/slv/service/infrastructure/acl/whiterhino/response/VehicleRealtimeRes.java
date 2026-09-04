@@ -1,8 +1,5 @@
 package dst.v2x.business.slv.service.infrastructure.acl.whiterhino.response;
 
-//import com.dst.collect.service.common.annotation.StatusDesc;
-//import com.dst.collect.service.common.enums.VehicelChargeGunStatusEnum;
-//import com.dst.collect.service.common.enums.VehicleChargeStatusEnum;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

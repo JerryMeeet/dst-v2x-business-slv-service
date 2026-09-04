@@ -1,7 +1,7 @@
 package dst.v2x.business.slv.service.module.business.can.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.dst.steed.vds.common.domain.response.Response;
+import dst.v2x.business.slv.service.common.domain.response.Response;
 import dst.v2x.business.slv.service.infrastructure.doris.dto.CanNavListQueryDTO;
 import dst.v2x.business.slv.service.module.business.can.service.CanDataNavBusinessService;
 import jakarta.validation.Valid;

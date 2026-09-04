@@ -1,6 +1,6 @@
 package dst.v2x.business.slv.service.infrastructure.acl.zelos.service;
 
-import com.dst.steed.vds.common.util.DstJsonUtil;
+import dst.v2x.business.slv.service.common.util.DstJsonUtil;
 import dst.v2x.business.slv.service.DstV2xBusinessSlvApplication;
 import dst.v2x.business.slv.service.infrastructure.biz.archive.entity.MapMake;
 import lombok.extern.slf4j.Slf4j;

@@ -1,6 +1,6 @@
 package dst.v2x.business.slv.service.infrastructure.biz.archive.dto;
 
-import com.dst.steed.vds.common.domain.request.PageQuery;
+import dst.v2x.business.slv.service.common.domain.request.PageQuery;
 import lombok.Data;
 
 /**

@@ -1,7 +1,7 @@
 package dst.v2x.business.slv.service.common.utils;
 
-import com.dst.steed.vds.common.base.exception.BusinessException;
-import com.dst.steed.vds.common.domain.response.RespType;
+import dst.v2x.business.slv.service.common.base.exception.BusinessException;
+import dst.v2x.business.slv.service.common.domain.response.RespType;
 import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.Getter;

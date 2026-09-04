@@ -1,4 +1,4 @@
-package com.dst.steed.vds.common.constant;
+package dst.v2x.business.slv.service.common.constant;
 
 public final class MinConstant {
     public static final String HEADER_TOKEN = "token";

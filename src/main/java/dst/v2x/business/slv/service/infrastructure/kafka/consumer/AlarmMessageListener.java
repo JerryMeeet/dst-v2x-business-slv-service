@@ -1,7 +1,7 @@
 package dst.v2x.business.slv.service.infrastructure.kafka.consumer;
 
 import cn.hutool.core.bean.BeanUtil;
-import com.dst.steed.vds.common.util.DstJsonUtil;
+import dst.v2x.business.slv.service.common.util.DstJsonUtil;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;

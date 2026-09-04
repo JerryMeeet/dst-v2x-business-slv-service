@@ -1,6 +1,6 @@
 package dst.v2x.business.slv.service.module.business.monitor.controller;
 
-import com.dst.steed.vds.common.domain.response.Response;
+import dst.v2x.business.slv.service.common.domain.response.Response;
 import dst.v2x.business.slv.service.infrastructure.biz.rtmp.vo.RtmpVideoVO;
 import dst.v2x.business.slv.service.module.business.monitor.service.MonitorVideoBusinessService;
 import org.springframework.beans.factory.annotation.Autowired;

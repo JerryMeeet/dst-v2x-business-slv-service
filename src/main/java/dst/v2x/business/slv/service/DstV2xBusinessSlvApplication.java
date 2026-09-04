@@ -1,6 +1,6 @@
 package dst.v2x.business.slv.service;
 
-import com.dst.steed.vds.common.util.DstSpringUtil;
+import dst.v2x.business.slv.service.common.util.DstSpringUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;

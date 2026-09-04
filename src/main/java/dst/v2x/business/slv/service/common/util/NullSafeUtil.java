@@ -1,4 +1,4 @@
-package com.dst.steed.vds.common.util;
+package dst.v2x.business.slv.service.common.util;
 
 import java.util.Optional;
 

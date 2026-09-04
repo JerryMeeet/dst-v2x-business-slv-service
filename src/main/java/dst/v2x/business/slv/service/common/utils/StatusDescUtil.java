@@ -1,6 +1,6 @@
 package dst.v2x.business.slv.service.common.utils;
 
-import com.dst.steed.vds.common.util.DstJsonUtil;
+import dst.v2x.business.slv.service.common.util.DstJsonUtil;
 import dst.v2x.business.slv.service.common.annotation.StatusDesc;
 import dst.v2x.business.slv.service.common.enums.BaseEnum;
 import lombok.extern.slf4j.Slf4j;
@@ -23,7 +23,7 @@ public class StatusDescUtil {
      * @return
      */
     public static void convertStatusDesc(Object object) {
-        if(object == null){
+        if (object == null) {
             return;
         }
         try {
@@ -44,9 +44,9 @@ public class StatusDescUtil {
                     // 设置状态中文值
                     if (fieldValue != null) {
                         BaseEnum baseEnum = BaseEnum.valueOf(fieldValue, enumClass);
-                        if(baseEnum != null){
+                        if (baseEnum != null) {
                             field.set(object, baseEnum.getDesc());
-                        }else {
+                        } else {
                             field.set(object, null);
                         }
                     }

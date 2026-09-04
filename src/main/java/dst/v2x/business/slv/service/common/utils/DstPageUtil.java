@@ -3,8 +3,8 @@ package dst.v2x.business.slv.service.common.utils;
 import cn.hutool.core.collection.CollUtil;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.dst.steed.vds.common.domain.request.PageQuery;
-import com.dst.steed.vds.common.domain.response.PageDTO;
+import dst.v2x.business.slv.service.common.domain.request.PageQuery;
+import dst.v2x.business.slv.service.common.domain.response.PageDTO;
 
 import java.util.Collections;
 import java.util.List;
